@@ -8,12 +8,10 @@
   </head>
   <body>
     <div class="container">
+      <!-- En-tête de l'application -->
       <div class="box-title">
-        <img src="" alt="" />
-        <h1>To do list</h1>
-      </div>
-      <div class="box-command">
         <svg
+          class="imgLogo lucide lucide-list-todo-icon lucide-list-todo"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -23,15 +21,88 @@
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="lucide lucide-square-plus-icon lucide-square-plus"
         >
-          <rect width="18" height="18" x="3" y="3" rx="2" />
-          <path d="M8 12h8" />
-          <path d="M12 8v8" />
+          <path d="M13 5h8" />
+          <path d="M13 12h8" />
+          <path d="M13 19h8" />
+          <path d="m3 17 2 2 4-4" />
+          <rect x="3" y="4" width="6" height="6" rx="1" />
         </svg>
-        <h2>Ajouter une tache</h2>
+        <h1>To Do List</h1>
       </div>
-      <div class="box-task"></div>
+
+      <!-- Zone principale -->
+      <div class="box-left">
+        <div class="box-command">
+          <!-- Bouton Ajouter une tâche -->
+          <div class="box-addTask">
+            <svg
+              class="i lucide lucide-square-plus-icon lucide-square-plus"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect width="18" height="18" x="3" y="3" rx="2" />
+              <path d="M8 12h8" />
+              <path d="M12 8v8" />
+            </svg>
+            <h2>Ajouter une tâche</h2>
+          </div>
+
+          <!-- Filtres de tri -->
+          <div class="command">
+            <fieldset>
+              <legend>État</legend>
+              <div class="radio-group">
+                <input type="radio" name="state" id="stateAll" checked />
+                <label for="stateAll">Tout</label>
+              </div>
+              <div class="radio-group">
+                <input type="radio" name="state" id="stateIsGoing" />
+                <label for="stateIsGoing">En cours</label>
+              </div>
+              <div class="radio-group">
+                <input type="radio" name="state" id="stateCompleted" />
+                <label for="stateCompleted">Terminés</label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Priorité</legend>
+              <div class="radio-group">
+                <input type="radio" name="priority" id="priorityAll" checked />
+                <label for="priorityAll">Tout</label>
+              </div>
+              <div class="radio-group">
+                <input type="radio" name="priority" id="priorityIsLow" />
+                <label for="priorityIsLow">Faible</label>
+              </div>
+              <div class="radio-group">
+                <input type="radio" name="priority" id="priorityIsMiddle" />
+                <label for="priorityIsMiddle">Moyenne</label>
+              </div>
+              <div class="radio-group">
+                <input type="radio" name="priority" id="priorityIsHigh" />
+                <label for="priorityIsHigh">Haute</label>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+
+        <!-- Liste des tâches (générée en JS) -->
+        <div class="box-task">
+          <ul class="listTask"></ul>
+        </div>
+      </div>
+
+      <!-- Zone droite optionnelle (si besoin d'étendre plus tard) -->
+      <div class="box-right"></div>
     </div>
   </body>
   <script type="module" src="/js/main.js"></script>
