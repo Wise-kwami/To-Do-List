@@ -1,0 +1,33 @@
+search icon
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+
+drop task 
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ban-icon lucide-ban"><circle cx="12" cy="12" r="10"/><path d="M4.929 4.929 19.07 19.071"/></svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x-icon lucide-circle-x"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+
+check icon
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-check-icon lucide-badge-check"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>
+
+currentColor
+#191970
+#1164B4
+#3457D5
+#003262
+#1F305E
+#6F00FF
+#00416A
+#26619C
+
+
+
+code couleur du logo
+Voici les codes hexadécimaux approximatifs des principales couleurs utilisées sur le logo (watermarked_img_16067358221136514835.png) :
+
+* **Bleu principal (Texte "Todo" et icône de validation) :** #137293 (un bleu canard / pétrole soutenu)
+* **Bleu clair (Dégradé de la coche) :** #42B4CD (un bleu turquoise plus vif)
+* **Orange (Deuxième barre de la liste) :** #F59223 (un orange chaud et dynamique)
+* **Vert (Troisième barre de la liste) :** #6BC060 (un vert pomme / herbe frais)
+* **Gris (Slogan "ORGANIZE. ACCOMPLISH.") :** #7A7A7A (un gris neutre intermédiaire)
+
+*Note : Les couleurs exactes peuvent varier de quelques nuances selon l'affichage, la compression de l'image ou le point précis de prélèvement (notamment sur le dégradé de la coche bleue).*
