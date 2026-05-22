@@ -36,3 +36,166 @@ Voici les codes hexadécimaux approximatifs des principales couleurs utilisées 
 * **Gris (Slogan "ORGANIZE. ACCOMPLISH.") :** #7A7A7A (un gris neutre intermédiaire)
 
 *Note : Les couleurs exactes peuvent varier de quelques nuances selon l'affichage, la compression de l'image ou le point précis de prélèvement (notamment sur le dégradé de la coche bleue).*
+
+
+balise li a mettre
+<ul class="listTask">
+            <ul class="listTask">
+              <!-- Exemple 1 : Tâche En cours & Priorité Haute -->
+              <li class="task-item">
+                <div class="task-main">
+                  <input type="checkbox" class="task-checkbox" id="check-1" />
+                  <label for="check-1" class="task-text"
+                    >Faire à manger pour toute la famille</label
+                  >
+                </div>
+                <div class="task-badges">
+                  <span class="badge status-going">En cours</span>
+                  <span class="badge priority-high">Haute</span>
+                </div>
+                <div class="task-actions">
+                  <!-- Bouton Modifier -->
+                  <button class="btn-action btn-edit" title="Modifier">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M12 20h9" />
+                      <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+                    </svg>
+                  </button>
+                  <!-- Bouton Supprimer -->
+                  <button class="btn-action btn-delete" title="Supprimer">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M3 6h18" />
+                      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                    </svg>
+                  </button>
+                </div>
+              </li>
+
+              <!-- Exemple 2 : Tâche Terminée & Priorité Moyenne -->
+              <li class="task-item task-done">
+                <div class="task-main">
+                  <input
+                    type="checkbox"
+                    class="task-checkbox"
+                    id="check-2"
+                    checked
+                  />
+                  <label for="check-2" class="task-text"
+                    >Acheter les ingrédients</label
+                  >
+                </div>
+                <div class="task-badges">
+                  <span class="badge status-completed">Terminé</span>
+                  <span class="badge priority-middle">Moyenne</span>
+                </div>
+                <div class="task-actions">
+                  <button class="btn-action btn-edit" title="Modifier">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M12 20h9" />
+                      <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+                    </svg>
+                  </button>
+                  <button class="btn-action btn-delete" title="Supprimer">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M3 6h18" />
+                      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                    </svg>
+                  </button>
+                </div>
+              </li>
+
+              <!-- Exemple 3 : Tâche En cours & Priorité Faible -->
+              <li class="task-item">
+                <div class="task-main">
+                  <input type="checkbox" class="task-checkbox" id="check-3" />
+                  <label for="check-3" class="task-text"
+                    >Nettoyer la table</label
+                  >
+                </div>
+                <div class="task-badges">
+                  <span class="badge status-going">En cours</span>
+                  <span class="badge priority-low">Faible</span>
+                </div>
+                <div class="task-actions">
+                  <button class="btn-action btn-edit" title="Modifier">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M12 20h9" />
+                      <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+                    </svg>
+                  </button>
+                  <button class="btn-action btn-delete" title="Supprimer">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M3 6h18" />
+                      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                    </svg>
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </ul>
+
+
+

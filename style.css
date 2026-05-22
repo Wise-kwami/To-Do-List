@@ -203,3 +203,157 @@ input[type="radio"]:checked + label {
         width: 100%;
     }
 }
+/* ==========================================================================
+   STYLE DES TÂCHES (À AJOUTER À LA FIN DE STYLE.CSS)
+   ========================================================================== */
+
+/* Structure de l'élément de liste */
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--colorBorder);
+    transition: background-color 0.2s ease;
+}
+
+.task-item:last-child {
+    border-bottom: none;
+}
+
+.task-item:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Zone texte et checkbox */
+.task-main {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.task-checkbox {
+    width: 20px;
+    height: 20px;
+    accent-color: #10B981; /* Vert émeraude pour la validation */
+    cursor: pointer;
+}
+
+.task-text {
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Style si la tâche est cochée/terminée (dynamique via classe ou JS) */
+.task-item.task-done .task-text {
+    color: var(--colorTextMuted);
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+/* Alignement des Badges de conditions */
+.task-badges {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Base commune des badges */
+.badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* COULEURS UNIQUES POUR CHAQUE CONDITION */
+
+/* États de progression */
+.status-going {
+    background-color: rgba(245, 158, 11, 0.15); /* Orange translucide */
+    color: #F59E0B;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.status-completed {
+    background-color: rgba(16, 185, 129, 0.15); /* Vert émeraude translucide */
+    color: #10B981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+/* Niveaux de priorité */
+.priority-low {
+    background-color: rgba(59, 130, 246, 0.15); /* Bleu */
+    color: #3B82F6;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.priority-middle {
+    background-color: rgba(139, 92, 246, 0.15); /* Violet */
+    color: #8B5CF6;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.priority-high {
+    background-color: rgba(239, 68, 68, 0.15); /* Rouge corail */
+    color: #EF4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Zone des boutons d'actions */
+.task-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* Boutons icônes */
+.btn-action {
+    background: transparent;
+    border: none;
+    padding: 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--colorTextMuted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+/* Effets au survol des actions */
+.btn-edit:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.btn-delete:hover {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #EF4444;
+}
+
+/* Adaptations mobiles */
+@media (max-width: 540px) {
+    .task-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    .task-badges, .task-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    .task-actions {
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: 8px;
+    }
+}
