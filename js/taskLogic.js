@@ -2,6 +2,7 @@
 // ainsi que la validation de l'input de l'utilisateur
 // Fonction pour tester le resulat
 
+import { displayTask } from "./taskView.js";
 import { store, saveLocalStorage } from "/js/store.js";
 function result(res) {
   return console.log(res);
@@ -30,6 +31,7 @@ export function createTask() {
     };
     //result(newTask);
     saveLocalStorage(newTask);
+    displayTask();
   } else {
     return;
   }

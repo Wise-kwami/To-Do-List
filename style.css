@@ -337,6 +337,7 @@ input[type="radio"]:checked + label {
     gap: 12px;
     flex: 1;
     min-width: 200px;
+    color: white;
 }
 
 .task-checkbox {

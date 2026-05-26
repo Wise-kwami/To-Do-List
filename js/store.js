@@ -9,7 +9,7 @@ function result(res) {
 }
 
 export function saveLocalStorage(tasks) {
-  const data = JSON.parse(localStorage.getItem("Tasks"));
+  const data = JSON.parse(localStorage.getItem(storageKey));
   console.log(data);
   if (data) {
     data.task.push(tasks);
@@ -22,4 +22,9 @@ export function saveLocalStorage(tasks) {
     localStorage.setItem(storageKey, resultJSON);
     result("Pas de local storge, on en crée une ");
   }
+}
+
+export function readLocalStorage() {
+  const tasks = JSON.parse(localStorage.getItem(storageKey));
+  return tasks;
 }
