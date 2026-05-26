@@ -8,7 +8,6 @@
   </head>
   <body>
     <div class="container">
-      <!-- En-tête de l'application -->
       <div class="box-title">
         <svg
           class="imgLogo lucide lucide-list-todo-icon lucide-list-todo"
@@ -31,75 +30,81 @@
         <h1>To Do List</h1>
       </div>
 
-      <!-- Zone principale -->
-      <div class="box-left">
-        <div class="box-command">
-          <!-- Bouton Ajouter une tâche -->
-          <div class="box-addTask">
-            <svg
-              class="i lucide lucide-square-plus-icon lucide-square-plus"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <rect width="18" height="18" x="3" y="3" rx="2" />
-              <path d="M8 12h8" />
-              <path d="M12 8v8" />
-            </svg>
-            <h2>Ajouter une tâche</h2>
-          </div>
-
-          <!-- Filtres de tri -->
-          <div class="command">
-            <fieldset>
-              <legend>État</legend>
-              <div class="radio-group">
-                <input type="radio" name="state" id="stateAll" checked />
-                <label for="stateAll">Tout</label>
-              </div>
-              <div class="radio-group">
-                <input type="radio" name="state" id="stateIsGoing" />
-                <label for="stateIsGoing">En cours</label>
-              </div>
-              <div class="radio-group">
-                <input type="radio" name="state" id="stateCompleted" />
-                <label for="stateCompleted">Terminés</label>
-              </div>
-            </fieldset>
-
-            <fieldset>
-              <legend>Priorité</legend>
-              <div class="radio-group">
-                <input type="radio" name="priority" id="priorityAll" checked />
-                <label for="priorityAll">Tout</label>
-              </div>
-              <div class="radio-group">
-                <input type="radio" name="priority" id="priorityIsLow" />
-                <label for="priorityIsLow">Faible</label>
-              </div>
-              <div class="radio-group">
-                <input type="radio" name="priority" id="priorityIsMiddle" />
-                <label for="priorityIsMiddle">Moyenne</label>
-              </div>
-              <div class="radio-group">
-                <input type="radio" name="priority" id="priorityIsHigh" />
-                <label for="priorityIsHigh">Haute</label>
-              </div>
-            </fieldset>
-          </div>
+      <div class="box-middle">
+        <div class="box-addTask">
+          <svg
+            class="i lucide lucide-square-plus-icon lucide-square-plus"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect width="18" height="18" x="3" y="3" rx="2" />
+            <path d="M8 12h8" />
+            <path d="M12 8v8" />
+          </svg>
+          <h2>Ajouter une tâche</h2>
         </div>
+        <div class="dot">
+          <span class="active-dot"></span>
+          <span></span>
+        </div>
+      </div>
 
-        <!-- Liste des tâches (générée en JS) -->
-        <div class="box-task">
-          <ul class="listTask">
+      <div class="boxes">
+        <div class="box-left">
+          <div class="box-command">
+            <div class="command">
+              <fieldset>
+                <legend>État</legend>
+                <div class="radio-group">
+                  <input type="radio" name="state" id="stateAll" checked />
+                  <label for="stateAll">Tout</label>
+                </div>
+                <div class="radio-group">
+                  <input type="radio" name="state" id="stateIsGoing" />
+                  <label for="stateIsGoing">En cours</label>
+                </div>
+                <div class="radio-group">
+                  <input type="radio" name="state" id="stateCompleted" />
+                  <label for="stateCompleted">Terminés</label>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>Priorité</legend>
+                <div class="radio-group">
+                  <input
+                    type="radio"
+                    name="priority"
+                    id="priorityAll"
+                    checked
+                  />
+                  <label for="priorityAll">Tout</label>
+                </div>
+                <div class="radio-group">
+                  <input type="radio" name="priority" id="priorityIsLow" />
+                  <label for="priorityIsLow">Faible</label>
+                </div>
+                <div class="radio-group">
+                  <input type="radio" name="priority" id="priorityIsMiddle" />
+                  <label for="priorityIsMiddle">Moyenne</label>
+                </div>
+                <div class="radio-group">
+                  <input type="radio" name="priority" id="priorityIsHigh" />
+                  <label for="priorityIsHigh">Haute</label>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+
+          <div class="box-task">
             <ul class="listTask">
-              <!-- Exemple 1 : Tâche En cours & Priorité Haute -->
               <li class="task-item">
                 <div class="task-main">
                   <input type="checkbox" class="task-checkbox" id="check-1" />
@@ -112,62 +117,6 @@
                   <span class="badge priority-high">Haute</span>
                 </div>
                 <div class="task-actions">
-                  <!-- Bouton Modifier -->
-                  <button class="btn-action btn-edit" title="Modifier">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M12 20h9" />
-                      <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
-                    </svg>
-                  </button>
-                  <!-- Bouton Supprimer -->
-                  <button class="btn-action btn-delete" title="Supprimer">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M3 6h18" />
-                      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                    </svg>
-                  </button>
-                </div>
-              </li>
-
-              <!-- Exemple 2 : Tâche Terminée & Priorité Moyenne -->
-              <li class="task-item task-done">
-                <div class="task-main">
-                  <input
-                    type="checkbox"
-                    class="task-checkbox"
-                    id="check-2"
-                    checked
-                  />
-                  <label for="check-2" class="task-text"
-                    >Acheter les ingrédients</label
-                  >
-                </div>
-                <div class="task-badges">
-                  <span class="badge status-completed">Terminé</span>
-                  <span class="badge priority-middle">Moyenne</span>
-                </div>
-                <div class="task-actions">
                   <button class="btn-action btn-edit" title="Modifier">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -204,196 +153,6 @@
                 </div>
               </li>
 
-              <!-- Exemple 3 : Tâche En cours & Priorité Faible -->
-              <li class="task-item">
-                <div class="task-main">
-                  <input type="checkbox" class="task-checkbox" id="check-3" />
-                  <label for="check-3" class="task-text"
-                    >Nettoyer la table</label
-                  >
-                </div>
-                <div class="task-badges">
-                  <span class="badge status-going">En cours</span>
-                  <span class="badge priority-low">Faible</span>
-                </div>
-                <div class="task-actions">
-                  <button class="btn-action btn-edit" title="Modifier">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M12 20h9" />
-                      <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
-                    </svg>
-                  </button>
-                  <button class="btn-action btn-delete" title="Supprimer">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M3 6h18" />
-                      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                    </svg>
-                  </button>
-                </div>
-              </li>
-
-              <li class="task-item">
-                <div class="task-main">
-                  <input type="checkbox" class="task-checkbox" id="check-3" />
-                  <label for="check-3" class="task-text"
-                    >Nettoyer la table</label
-                  >
-                </div>
-                <div class="task-badges">
-                  <span class="badge status-going">En cours</span>
-                  <span class="badge priority-low">Faible</span>
-                </div>
-                <div class="task-actions">
-                  <button class="btn-action btn-edit" title="Modifier">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M12 20h9" />
-                      <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
-                    </svg>
-                  </button>
-                  <button class="btn-action btn-delete" title="Supprimer">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M3 6h18" />
-                      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                    </svg>
-                  </button>
-                </div>
-              </li>
-              <li class="task-item">
-                <div class="task-main">
-                  <input type="checkbox" class="task-checkbox" id="check-3" />
-                  <label for="check-3" class="task-text"
-                    >Nettoyer la table</label
-                  >
-                </div>
-                <div class="task-badges">
-                  <span class="badge status-going">En cours</span>
-                  <span class="badge priority-low">Faible</span>
-                </div>
-                <div class="task-actions">
-                  <button class="btn-action btn-edit" title="Modifier">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M12 20h9" />
-                      <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
-                    </svg>
-                  </button>
-                  <button class="btn-action btn-delete" title="Supprimer">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M3 6h18" />
-                      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                    </svg>
-                  </button>
-                </div>
-              </li>
-              <li class="task-item">
-                <div class="task-main">
-                  <input type="checkbox" class="task-checkbox" id="check-3" />
-                  <label for="check-3" class="task-text"
-                    >Nettoyer la table</label
-                  >
-                </div>
-                <div class="task-badges">
-                  <span class="badge status-going">En cours</span>
-                  <span class="badge priority-low">Faible</span>
-                </div>
-                <div class="task-actions">
-                  <button class="btn-action btn-edit" title="Modifier">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M12 20h9" />
-                      <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
-                    </svg>
-                  </button>
-                  <button class="btn-action btn-delete" title="Supprimer">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M3 6h18" />
-                      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                    </svg>
-                  </button>
-                </div>
-              </li>
               <li class="task-item">
                 <div class="task-main">
                   <input type="checkbox" class="task-checkbox" id="check-3" />
@@ -442,13 +201,87 @@
                 </div>
               </li>
             </ul>
-          </ul>
+          </div>
+        </div>
+
+        <div class="box-right">
+          <div class="newTask">
+            <h2>Nouvelle tâche</h2>
+            <input
+              type="text"
+              name="task"
+              id="inputTask"
+              placeholder="Nommez votre tâche"
+            />
+
+            <fieldset>
+              <legend class="inputRadio">
+                Choisissez la priorité de votre tâche
+              </legend>
+              <div class="radio-group">
+                <input
+                  type="radio"
+                  name="new-priority"
+                  value="Haute"
+                  id="levelHigh"
+                />
+                <label for="levelHigh">Haute</label>
+              </div>
+              <div class="radio-group">
+                <input
+                  type="radio"
+                  name="new-priority"
+                  value="Moyenne"
+                  id="levelMiddle"
+                />
+                <label for="levelMiddle">Moyenne</label>
+              </div>
+              <div class="radio-group">
+                <input
+                  type="radio"
+                  name="new-priority"
+                  value="Faible"
+                  id="levelLow"
+                  checked
+                />
+                <label for="levelLow">Faible</label>
+              </div>
+            </fieldset>
+
+            <div class="btnAddNewTask">
+              <button id="btnAddTask">Enregistrer la tâche</button>
+              <button id="btnBack">Annuler</button>
+            </div>
+          </div>
         </div>
       </div>
-
-      <!-- Zone droite optionnelle (si besoin d'étendre plus tard) -->
-      <div class="box-right"></div>
     </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const triggerZone = document.querySelector(".box-addTask h2");
+        const btnBack = document.getElementById("btnBack");
+        const boxesContainer = document.querySelector(".boxes");
+        const dots = document.querySelectorAll(".dot span");
+
+        if (triggerZone && boxesContainer && dots.length >= 2) {
+          // Aller vers le formulaire (Slide Droite)
+          triggerZone.addEventListener("click", () => {
+            boxesContainer.classList.add("show-right");
+            dots[0].classList.remove("active-dot");
+            dots[1].classList.add("active-dot");
+          });
+
+          // Retourner à la liste (Slide Gauche)
+          btnBack.addEventListener("click", () => {
+            boxesContainer.classList.remove("show-right");
+            dots[1].classList.remove("active-dot");
+            dots[0].classList.add("active-dot");
+          });
+        }
+      });
+    </script>
+    <script type="module" src="/js/main.js"></script>
+    <script src="/js/store.js"></script>
   </body>
-  <script type="module" src="/js/main.js"></script>
 </html>
