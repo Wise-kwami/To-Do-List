@@ -2,8 +2,8 @@
 // ainsi que la validation de l'input de l'utilisateur
 // Fonction pour tester le resulat
 
-import { displayTask } from "./taskView.js";
-import { store, saveLocalStorage } from "/js/store.js";
+import { displayTask, displayInitTask } from "./taskView.js";
+import { store, saveLocalStorage, readLocalStorage } from "/js/store.js";
 function result(res) {
   return console.log(res);
 }
@@ -34,5 +34,17 @@ export function createTask() {
     displayTask();
   } else {
     return;
+  }
+}
+
+export function init() {
+  const data = readLocalStorage() || [];
+  console.log("la donnee vaut : ", data);
+  if (data.length === 0) {
+    console.log("zero tache");
+    displayInitTask();
+  } else {
+    console.log("Tache existante");
+    displayTask();
   }
 }

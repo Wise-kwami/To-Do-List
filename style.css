@@ -429,6 +429,29 @@ input[type="radio"]:checked + label {
 .btn-delete:hover {
     background-color: rgba(239, 68, 68, 0.2);
     color: #EF4444;
+
+}
+.not-tasks
+{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;   
+}
+.not-tasks svg
+{
+    
+    color: var(--colorAccent);
+    filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5)); 
+    height: clamp(150px, 5vw, 200px);
+    width: clamp(150px, 5vw, 200px);
+}
+h3
+{
+    color: white;
+    
 }
 
 /* Responsive ajustements */

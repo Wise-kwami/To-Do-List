@@ -7,7 +7,7 @@ const listUl = document.querySelector(".listTask");
 export function displayTask() {
   const data = readLocalStorage();
   listUl.innerHTML = "";
-  for (let i = 0; i < data.task.length; i++) {
+  for (let i = 0; i < data.tasks.length; i++) {
     const li = document.createElement("li");
     const span1 = document.createElement("span");
     const span2 = document.createElement("span");
@@ -15,23 +15,23 @@ export function displayTask() {
     li.innerHTML = `
      
                 <div class="task-main">
-                  <input type="checkbox" class="task-checkbox" id="${data.task[i].id} />
+                  <input type="checkbox" class="task-checkbox"/>
                   <label for="check-1" class="task-text"
-                    >${data.task[i].nameTask} </label
+                    >${data.tasks[i].nameTask} </label
                   >
                 </div>
                 <div class="task-badges">
                 ${
-                  data.task[i].isInProgress
+                  data.tasks[i].isInProgress
                     ? (span2.innerHTML = `<span class="badge status-going">En cours</span>`)
                     : (span2.innerHTML = `<span class="badge status-completed">Terminée</span>`)
                 }
                 ${
-                  data.task[i].priority === "Haute"
-                    ? (span1.innerHTML = `<span class="badge priority-high">${data.task[i].priority}</span>`)
-                    : data.task[i].priority === "Moyenne"
-                      ? (span1.innerHTML = `<span class="badge priority-middle">${data.task[i].priority}</span>`)
-                      : (span1.innerHTML = `<span class="badge priority-low">${data.task[i].priority}</span>`)
+                  data.tasks[i].priority === "Haute"
+                    ? (span1.innerHTML = `<span class="badge priority-high">${data.tasks[i].priority}</span>`)
+                    : data.tasks[i].priority === "Moyenne"
+                      ? (span1.innerHTML = `<span class="badge priority-middle">${data.tasks[i].priority}</span>`)
+                      : (span1.innerHTML = `<span class="badge priority-low">${data.tasks[i].priority}</span>`)
                 }
                 
                 
@@ -83,4 +83,21 @@ export function displayTask() {
     `;
     listUl.appendChild(li);
   }
+}
+
+export function displayInitTask() {
+  listUl.innerHTML = `<div class="not-tasks">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
+viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+ stroke-linecap="round" stroke-linejoin="round" 
+ class="lucide lucide-ban-icon lucide-ban">
+ <circle cx="12" cy="12" r="10"/><path d="M4.929 4.929 19.07 19.071"/>
+ </svg>
+
+  <h3>Aucune tache</h3>
+
+  </div>
+
+  
+  `;
 }
