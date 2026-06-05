@@ -3,7 +3,11 @@
 // Fonction pour tester le resulat
 
 import { displayTask, displayInitTask } from "./taskView.js";
-import { store, saveLocalStorage, readLocalStorage } from "/js/store.js";
+import {
+  saveUpdateTask,
+  saveLocalStorage,
+  readLocalStorage,
+} from "/js/store.js";
 function result(res) {
   return console.log(res);
 }
@@ -27,7 +31,7 @@ export function createTask() {
       id: Date.now(),
       nameTask: inputTask.value,
       priority: inputPriority,
-      isInProgress: true,
+      isFinished: false,
     };
     //result(newTask);
     saveLocalStorage(newTask);
@@ -37,7 +41,7 @@ export function createTask() {
   }
 }
 
-export function init() {
+export function initialization() {
   const data = readLocalStorage() || [];
   console.log("la donnee vaut : ", data);
   if (data.length === 0) {
@@ -47,4 +51,28 @@ export function init() {
     console.log("Tache existante");
     displayTask();
   }
+}
+
+export function updateStatus(btnCheckBox, index) {
+  const data = readLocalStorage();
+  if (btnCheckBox.checked) {
+    data[index].isFinished = true;
+    console.log(data[index]);
+    saveUpdateTask(data);
+    initialization();
+  } else {
+    data[index].isFinished = false;
+    console.log(data[index]);
+    saveUpdateTask(data);
+    initialization();
+  }
+}
+
+export function deleteTask(index) {
+  const data = readLocalStorage();
+  console.log("la tache supprimée est :", data[index]);
+  const newData = data.filter((task, indexNewData) => indexNewData !== index);
+  console.log("newData vaut : ", newData);
+  saveUpdateTask(newData);
+  initialization();
 }

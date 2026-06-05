@@ -2,36 +2,43 @@
 // , c'est à dire l'ajout, la suppression et la modification des tâches,
 // ainsi que la validation de l'input de l'utilisateur
 import { readLocalStorage } from "./store.js";
+import { updateStatus, deleteTask } from "./taskLogic.js";
 const listUl = document.querySelector(".listTask");
 
 export function displayTask() {
   const data = readLocalStorage();
   listUl.innerHTML = "";
-  for (let i = 0; i < data.tasks.length; i++) {
+  for (let i = 0; i < data.length; i++) {
     const li = document.createElement("li");
     const span1 = document.createElement("span");
     const span2 = document.createElement("span");
+    const input = document.createElement("input");
     li.className = "task-item";
     li.innerHTML = `
      
                 <div class="task-main">
-                  <input type="checkbox" class="task-checkbox"/>
+                ${
+                  data[i].isFinished
+                    ? (input.innerHTML = `<input type="checkbox" class="task-checkbox" checked/>`)
+                    : (input.innerHTML = `<input type="checkbox" class="task-checkbox" />`)
+                }
                   <label for="check-1" class="task-text"
-                    >${data.tasks[i].nameTask} </label
+                    >${data[i].nameTask} 
+                    </label
                   >
                 </div>
                 <div class="task-badges">
                 ${
-                  data.tasks[i].isInProgress
-                    ? (span2.innerHTML = `<span class="badge status-going">En cours</span>`)
-                    : (span2.innerHTML = `<span class="badge status-completed">Terminée</span>`)
+                  data[i].isFinished
+                    ? (span2.innerHTML = `<span class="badge status-completed">Terminée</span>`)
+                    : (span2.innerHTML = `<span class="badge status-going">En cours</span>`)
                 }
                 ${
-                  data.tasks[i].priority === "Haute"
-                    ? (span1.innerHTML = `<span class="badge priority-high">${data.tasks[i].priority}</span>`)
-                    : data.tasks[i].priority === "Moyenne"
-                      ? (span1.innerHTML = `<span class="badge priority-middle">${data.tasks[i].priority}</span>`)
-                      : (span1.innerHTML = `<span class="badge priority-low">${data.tasks[i].priority}</span>`)
+                  data[i].priority === "Haute"
+                    ? (span1.innerHTML = `<span class="badge priority-high">${data[i].priority}</span>`)
+                    : data[i].priority === "Moyenne"
+                      ? (span1.innerHTML = `<span class="badge priority-middle">${data[i].priority}</span>`)
+                      : (span1.innerHTML = `<span class="badge priority-low">${data[i].priority}</span>`)
                 }
                 
                 
@@ -39,23 +46,7 @@ export function displayTask() {
 
 
                 <div class="task-actions">
-                  <!-- Bouton Modifier -->
-                  <button class="btn-action btn-edit" title="Modifier">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M12 20h9" />
-                      <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
-                    </svg>
-                  </button>
+               
                   <!-- Bouton Supprimer -->
                   <button class="btn-action btn-delete" title="Supprimer">
                     <svg
@@ -75,12 +66,20 @@ export function displayTask() {
                     </svg>
                   </button>
                 </div>
-            
-    
-    
-    
-    
     `;
+
+    const checkbox = li.querySelector(".task-checkbox");
+    checkbox.addEventListener("change", () => {
+      console.log("checkbox:", i);
+      updateStatus(checkbox, i);
+    });
+
+    const btnDelete = li.querySelector(".btn-delete");
+    btnDelete.addEventListener("click", () => {
+      console.log("delete:", i);
+      deleteTask(i);
+    });
+
     listUl.appendChild(li);
   }
 }
