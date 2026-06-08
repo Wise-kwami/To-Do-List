@@ -4,9 +4,8 @@
 import { readLocalStorage } from "./store.js";
 import { updateStatus, deleteTask } from "./taskLogic.js";
 const listUl = document.querySelector(".listTask");
-
-export function displayTask() {
-  const data = readLocalStorage();
+const dataLocalStorage = readLocalStorage();
+export function displayTask(data) {
   listUl.innerHTML = "";
   for (let i = 0; i < data.length; i++) {
     const li = document.createElement("li");
@@ -34,9 +33,9 @@ export function displayTask() {
                     : (span2.innerHTML = `<span class="badge status-going">En cours</span>`)
                 }
                 ${
-                  data[i].priority === "Haute"
+                  data[i].priority === "haute"
                     ? (span1.innerHTML = `<span class="badge priority-high">${data[i].priority}</span>`)
-                    : data[i].priority === "Moyenne"
+                    : data[i].priority === "moyenne"
                       ? (span1.innerHTML = `<span class="badge priority-middle">${data[i].priority}</span>`)
                       : (span1.innerHTML = `<span class="badge priority-low">${data[i].priority}</span>`)
                 }

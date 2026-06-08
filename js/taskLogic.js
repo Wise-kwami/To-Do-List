@@ -35,7 +35,7 @@ export function createTask() {
     };
     //result(newTask);
     saveLocalStorage(newTask);
-    displayTask();
+    displayTask(readLocalStorage());
   } else {
     return;
   }
@@ -49,7 +49,7 @@ export function initialization() {
     displayInitTask();
   } else {
     console.log("Tache existante");
-    displayTask();
+    displayTask(data);
   }
 }
 
@@ -75,4 +75,11 @@ export function deleteTask(index) {
   console.log("newData vaut : ", newData);
   saveUpdateTask(newData);
   initialization();
+}
+
+export function filterTaskByPriority(priority) {
+  const data = readLocalStorage();
+  const filteredData = data.filter((task) => task.priority === priority);
+  console.log("Tâches filtrées : ", filteredData);
+  return filteredData;
 }
