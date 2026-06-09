@@ -8,6 +8,7 @@ import {
   initialization,
   updateStatus,
   filterTaskByPriority,
+  filterTaskByStatus,
 } from "/js/taskLogic.js";
 
 // Fonction pour tester le resulat
@@ -32,6 +33,20 @@ const btnStatus = document.querySelectorAll(".radio-group input[name=state]");
 btnStatus.forEach((btnStatus) => {
   btnStatus.addEventListener("change", () => {
     console.log(btnStatus.value);
+    switch (btnStatus.value) {
+      case "tout":
+        console.log("la radio est tout");
+        displayTask(readLocalStorage());
+        break;
+      case "termine":
+        console.log("la radio est terminée");
+        displayTask(filterTaskByStatus(true));
+        break;
+      case "en-cours":
+        console.log("la radio est en cours");
+        displayTask(filterTaskByStatus(false));
+        break;
+    }
   });
 });
 btnPriorities.forEach((btnPriority) => {

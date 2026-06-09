@@ -83,3 +83,9 @@ export function filterTaskByPriority(priority) {
   console.log("Tâches filtrées : ", filteredData);
   return filteredData;
 }
+export function filterTaskByStatus(status) {
+  const data = readLocalStorage();
+  const filteredData = data.filter((task) => task.isFinished === status);
+  console.log("Tâches filtrées : ", filteredData);
+  return filteredData;
+}
