@@ -9,6 +9,7 @@ import {
   updateStatus,
   filterTaskByPriority,
   filterTaskByStatus,
+  checkTask,
 } from "/js/taskLogic.js";
 
 // Fonction pour tester le resulat
@@ -84,4 +85,16 @@ btnPriorities.forEach((btnPriority) => {
         break;
     }
   });
+});
+
+const listUL = document.querySelector(".listTask");
+listUL.addEventListener("click", (event) => {
+  if (event.target.classList.contains("task-checkbox")) {
+    console.log(event.target.id);
+    console.log("le bouton checkbox vaut :", event.target.checked);
+    displayTask(checkTask(event.target.id, event.target.checked));
+  }
+  if (event.target.classList.contains("delete")) {
+    console.log("un bouton delete");
+  }
 });

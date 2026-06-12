@@ -18,8 +18,8 @@ export function displayTask(data) {
                 <div class="task-main">
                 ${
                   data[i].isFinished
-                    ? (input.innerHTML = `<input type="checkbox" class="task-checkbox" checked/>`)
-                    : (input.innerHTML = `<input type="checkbox" class="task-checkbox" />`)
+                    ? (input.innerHTML = `<input type="checkbox" class="task-checkbox" checked  id="${data[i].id}"/>`)
+                    : (input.innerHTML = `<input type="checkbox" class="task-checkbox" id="${data[i].id}" />`)
                 }
                   <label for="check-1" class="task-text"
                     >${data[i].nameTask} 
@@ -49,6 +49,7 @@ export function displayTask(data) {
                   <!-- Bouton Supprimer -->
                   <button class="btn-action btn-delete" title="Supprimer">
                     <svg
+                    class= "delete"
                       xmlns="http://www.w3.org/2000/svg"
                       width="18"
                       height="18"
@@ -66,18 +67,6 @@ export function displayTask(data) {
                   </button>
                 </div>
     `;
-
-    const checkbox = li.querySelector(".task-checkbox");
-    checkbox.addEventListener("change", () => {
-      console.log("checkbox:", i);
-      updateStatus(checkbox, i);
-    });
-
-    const btnDelete = li.querySelector(".btn-delete");
-    btnDelete.addEventListener("click", () => {
-      console.log("delete:", i);
-      deleteTask(i);
-    });
 
     listUl.appendChild(li);
   }

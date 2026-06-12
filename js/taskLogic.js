@@ -2,15 +2,16 @@
 // ainsi que la validation de l'input de l'utilisateur
 // Fonction pour tester le resulat
 
+import { addTask } from "./store.js";
 import { displayTask, displayInitTask } from "./taskView.js";
 import {
   saveUpdateTask,
   saveLocalStorage,
   readLocalStorage,
 } from "/js/store.js";
-function result(res) {
-  return console.log(res);
-}
+// function result(res) {
+//   return console.log(res);
+// }
 const inputTask = document.getElementById("inputTask");
 
 const radioPriority = document.querySelectorAll(
@@ -27,12 +28,7 @@ export function createTask() {
   }
 
   if (inputTask.value.trim() !== "") {
-    const newTask = {
-      id: Date.now(),
-      nameTask: inputTask.value,
-      priority: inputPriority,
-      isFinished: false,
-    };
+    const newTask = addTask(inputTask.value, inputPriority);
     //result(newTask);
     saveLocalStorage(newTask);
     displayTask(readLocalStorage());
@@ -65,6 +61,26 @@ export function updateStatus(btnCheckBox, index) {
     console.log(data[index]);
     saveUpdateTask(data);
     initialization();
+  }
+}
+
+export function checkTask(i, btnChecked) {
+  const tasks = readLocalStorage();
+
+  const task = tasks.find((t) => t.id === Number(i));
+
+  if (btnChecked) {
+    console.log("la tache avant vaut :", task);
+    task.isFinished = true;
+    console.log("la tache vaut :", task);
+    saveUpdateTask(tasks);
+    return tasks;
+  } else {
+    console.log("la tache avant vaut :", task);
+    task.isFinished = false;
+    console.log("la tache vaut :", task);
+    saveUpdateTask(tasks);
+    return tasks;
   }
 }
 
