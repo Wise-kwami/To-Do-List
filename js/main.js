@@ -1,43 +1,36 @@
 //Fichier JS maitre d'orchestre qui gere les fcihier js : store, taskModel et taskView
 //importation des modules
 
-import { readLocalStorage } from "/js/store.js";
+import { readLocalStorage, state } from "/js/store.js";
 import { displayInitTask, displayTask } from "/js/taskView.js";
 import {
   createTask,
-  initialization,
-  updateStatus,
   filterTaskByPriority,
   filterTaskByStatus,
   checkTask,
+  initialization,
+  deleteTask,
 } from "/js/taskLogic.js";
 
 // Fonction pour tester le resulat
-function result(res) {
-  return console.log(res);
-}
 
+state.tasks = readLocalStorage();
+console.log("la donnee vaut : ", state.tasks);
 const btnAddTask = document.querySelector("#btnAddTask");
 const btnBack = document.querySelector("#btnBack");
-
-initialization();
-
-btnAddTask.addEventListener("click", () => {
-  createTask();
-  displayTask(readLocalStorage());
-});
-
 const btnPriorities = document.querySelectorAll(
   ".radio-group input[name=priority]",
 );
 const btnStatus = document.querySelectorAll(".radio-group input[name=state]");
+const listUL = document.querySelector(".listTask");
+
 btnStatus.forEach((btnStatus) => {
   btnStatus.addEventListener("change", () => {
     console.log(btnStatus.value);
     switch (btnStatus.value) {
       case "tout":
         console.log("la radio est tout");
-        displayTask(readLocalStorage());
+        displayTask(state);
         break;
       case "termine":
         console.log("la radio est terminée");
@@ -59,7 +52,7 @@ btnPriorities.forEach((btnPriority) => {
       case "tout":
         console.log("la radio est tout");
         console.log("Mes données en avant : ", readLocalStorage());
-        displayTask(readLocalStorage());
+        displayTask(state);
         break;
       case "haute":
         console.log("la radio est haute");
@@ -86,15 +79,23 @@ btnPriorities.forEach((btnPriority) => {
     }
   });
 });
-
-const listUL = document.querySelector(".listTask");
+btnAddTask.addEventListener("click", () => {
+  // displayTask(createTask(state));
+  createTask(state);
+  displayTask(state);
+});
 listUL.addEventListener("click", (event) => {
   if (event.target.classList.contains("task-checkbox")) {
-    console.log(event.target.id);
-    console.log("le bouton checkbox vaut :", event.target.checked);
-    displayTask(checkTask(event.target.id, event.target.checked));
+    // console.log(event.target.id);
+    // console.log("le bouton checkbox vaut :", event.target.checked);
+    checkTask(event.target.id, event.target.checked, state);
+    displayTask(state);
   }
   if (event.target.classList.contains("delete")) {
     console.log("un bouton delete");
+    console.log("l'id est :", event.target.id);
+    deleteTask(event.target.id, state);
+    displayTask(state);
   }
 });
+initialization(state);

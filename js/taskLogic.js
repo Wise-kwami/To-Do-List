@@ -2,12 +2,13 @@
 // ainsi que la validation de l'input de l'utilisateur
 // Fonction pour tester le resulat
 
-import { addTask } from "./store.js";
-import { displayTask, displayInitTask } from "./taskView.js";
+import { displayTask, displayInitTask } from "/js/taskView.js";
 import {
   saveUpdateTask,
   saveLocalStorage,
   readLocalStorage,
+  addTask,
+  state,
 } from "/js/store.js";
 // function result(res) {
 //   return console.log(res);
@@ -18,7 +19,7 @@ const radioPriority = document.querySelectorAll(
   ".radio-group input[name=new-priority] ",
 );
 
-export function createTask() {
+export function createTask(data) {
   let inputPriority;
 
   for (let i = 0; i < radioPriority.length; i++) {
@@ -29,68 +30,35 @@ export function createTask() {
 
   if (inputTask.value.trim() !== "") {
     const newTask = addTask(inputTask.value, inputPriority);
-    //result(newTask);
+
     saveLocalStorage(newTask);
-    displayTask(readLocalStorage());
   } else {
     return;
   }
 }
 
-export function initialization() {
-  const data = readLocalStorage() || [];
-  console.log("la donnee vaut : ", data);
-  if (data.length === 0) {
-    console.log("zero tache");
-    displayInitTask();
-  } else {
-    console.log("Tache existante");
-    displayTask(data);
-  }
-}
-
-export function updateStatus(btnCheckBox, index) {
-  const data = readLocalStorage();
-  if (btnCheckBox.checked) {
-    data[index].isFinished = true;
-    console.log(data[index]);
-    saveUpdateTask(data);
-    initialization();
-  } else {
-    data[index].isFinished = false;
-    console.log(data[index]);
-    saveUpdateTask(data);
-    initialization();
-  }
-}
-
-export function checkTask(i, btnChecked) {
-  const tasks = readLocalStorage();
-
-  const task = tasks.find((t) => t.id === Number(i));
+export function checkTask(i, btnChecked, data) {
+  const task = data.tasks.find((t) => t.id === Number(i));
 
   if (btnChecked) {
     console.log("la tache avant vaut :", task);
     task.isFinished = true;
     console.log("la tache vaut :", task);
-    saveUpdateTask(tasks);
-    return tasks;
+    saveUpdateTask(data.tasks);
+    //return data;
   } else {
     console.log("la tache avant vaut :", task);
     task.isFinished = false;
     console.log("la tache vaut :", task);
-    saveUpdateTask(tasks);
-    return tasks;
+    saveUpdateTask(data.tasks);
+    //return data;
   }
 }
-
-export function deleteTask(index) {
-  const data = readLocalStorage();
-  console.log("la tache supprimée est :", data[index]);
-  const newData = data.filter((task, indexNewData) => indexNewData !== index);
-  console.log("newData vaut : ", newData);
+export function deleteTask(id, data) {
+  const newData = data.tasks.filter((t) => t.id !== Number(id));
+  console.log("les données avant le filtre pour supprimer: ", data.tasks);
+  console.log("les données apres le filtre pour supprimer: ", newData);
   saveUpdateTask(newData);
-  initialization();
 }
 
 export function filterTaskByPriority(priority) {
@@ -104,4 +72,39 @@ export function filterTaskByStatus(status) {
   const filteredData = data.filter((task) => task.isFinished === status);
   console.log("Tâches filtrées : ", filteredData);
   return filteredData;
+}
+
+export function classPriority(priority) {
+  switch (priority) {
+    case "haute":
+      return "badge priority-high";
+    case "moyenne":
+      return "badge priority-middle";
+    case "faible":
+      return "badge priority-low";
+    default:
+      return "null";
+  }
+}
+
+export function classStatus(status) {
+  return status ? "badge status-completed" : "badge status-going";
+}
+export function classStatusText(status) {
+  return status ? "Terminée" : "En-cours";
+}
+export function classCheckBox(valueCheckbox) {
+  return valueCheckbox
+    ? `type="checkbox" class="task-checkbox" checked`
+    : `type="checkbox" class="task-checkbox" `;
+}
+
+export function initialization(data) {
+  if (state.tasks.length === 0) {
+    console.log("zero tache");
+    displayInitTask();
+  } else {
+    console.log("Tache existante");
+    displayTask(data);
+  }
 }

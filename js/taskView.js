@@ -1,46 +1,41 @@
 // Ce fichier gere le rendu dans le DOM de l'application apres les modifications apportées par le taskModel et le store
 // , c'est à dire l'ajout, la suppression et la modification des tâches,
 // ainsi que la validation de l'input de l'utilisateur
-import { readLocalStorage } from "./store.js";
-import { updateStatus, deleteTask } from "./taskLogic.js";
+
+import { readLocalStorage } from "/js/store.js";
+import {
+  classPriority,
+  classStatus,
+  classStatusText,
+  classCheckBox,
+} from "/js/taskLogic.js";
+
 const listUl = document.querySelector(".listTask");
-const dataLocalStorage = readLocalStorage();
+
 export function displayTask(data) {
   listUl.innerHTML = "";
-  for (let i = 0; i < data.length; i++) {
-    const li = document.createElement("li");
-    const span1 = document.createElement("span");
-    const span2 = document.createElement("span");
-    const input = document.createElement("input");
-    li.className = "task-item";
-    li.innerHTML = `
+  data.tasks = readLocalStorage();
+  if (data.tasks === undefined) {
+    console.log("la valeur ajouté :", data.tasks);
+    displayInitTask();
+  } else {
+    for (let i = 0; i < data.tasks.length; i++) {
+      const li = document.createElement("li");
+      li.className = "task-item";
+      li.innerHTML = `
      
                 <div class="task-main">
-                ${
-                  data[i].isFinished
-                    ? (input.innerHTML = `<input type="checkbox" class="task-checkbox" checked  id="${data[i].id}"/>`)
-                    : (input.innerHTML = `<input type="checkbox" class="task-checkbox" id="${data[i].id}" />`)
-                }
+                <input type="checkbox" ${classCheckBox(data.tasks[i].isFinished)}  id="${data.tasks[i].id}"/>
+                
+
                   <label for="check-1" class="task-text"
-                    >${data[i].nameTask} 
+                    >${data.tasks[i].nameTask} 
                     </label
                   >
                 </div>
                 <div class="task-badges">
-                ${
-                  data[i].isFinished
-                    ? (span2.innerHTML = `<span class="badge status-completed">Terminée</span>`)
-                    : (span2.innerHTML = `<span class="badge status-going">En cours</span>`)
-                }
-                ${
-                  data[i].priority === "haute"
-                    ? (span1.innerHTML = `<span class="badge priority-high">${data[i].priority}</span>`)
-                    : data[i].priority === "moyenne"
-                      ? (span1.innerHTML = `<span class="badge priority-middle">${data[i].priority}</span>`)
-                      : (span1.innerHTML = `<span class="badge priority-low">${data[i].priority}</span>`)
-                }
-                
-                
+                <span class=" ${classStatus(data.tasks[i].isFinished)}">${classStatusText(data.tasks[i].isFinished)}</span>
+                <span class= "${classPriority(data.tasks[i].priority)}">${data.tasks[i].priority}</span>
                 </div>
 
 
@@ -50,6 +45,7 @@ export function displayTask(data) {
                   <button class="btn-action btn-delete" title="Supprimer">
                     <svg
                     class= "delete"
+                    id= ${data.tasks[i].id}
                       xmlns="http://www.w3.org/2000/svg"
                       width="18"
                       height="18"
@@ -68,7 +64,8 @@ export function displayTask(data) {
                 </div>
     `;
 
-    listUl.appendChild(li);
+      listUl.appendChild(li);
+    }
   }
 }
 
