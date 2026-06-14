@@ -18,7 +18,7 @@ const inputTask = document.getElementById("inputTask");
 const radioPriority = document.querySelectorAll(
   ".radio-group input[name=new-priority] ",
 );
-
+const iconeValidateAddTask = document.querySelector(".validateAddTask");
 export function createTask(data) {
   let inputPriority;
 
@@ -32,6 +32,16 @@ export function createTask(data) {
     const newTask = addTask(inputTask.value, inputPriority);
 
     saveLocalStorage(newTask);
+    inputTask.value = "";
+    iconeValidateAddTask.classList.add("activeIcone");
+    setTimeout(function () {
+      const boxesContainer = document.querySelector(".boxes");
+      const dots = document.querySelectorAll(".dot span");
+      boxesContainer.classList.remove("show-right");
+      dots[1].classList.remove("active-dot");
+      dots[0].classList.add("active-dot");
+      iconeValidateAddTask.classList.remove("activeIcone");
+    }, 2000);
   } else {
     return;
   }

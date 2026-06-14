@@ -448,11 +448,37 @@ input[type="radio"]:checked + label {
     height: clamp(150px, 5vw, 200px);
     width: clamp(150px, 5vw, 200px);
 }
-h3
+h3,h4
 {
     color: white;
     
 }
+.validateAddTask
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+    visibility: hidden;
+}
+.activeIcone
+{
+    visibility: visible;
+    transition: visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.validateAddTask svg
+{
+    color: rgba(45, 240, 55, 0.5);
+    filter: drop-shadow(0 0 8px rgba(45, 240, 55, 0.5)); 
+    height: clamp(150px, 5vw, 200px);
+    width: clamp(150px, 5vw, 200px);
+}
+
+
+
+
+
 
 /* Responsive ajustements */
 @media (max-width: 600px) {

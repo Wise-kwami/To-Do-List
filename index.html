@@ -48,7 +48,7 @@
             <path d="M8 12h8" />
             <path d="M12 8v8" />
           </svg>
-          <h2>Ajouter une tâche</h2>
+          <h2 title="Cliquer ici pour ajouter une tâche">Ajouter une tâche</h2>
         </div>
         <div class="dot">
           <span class="active-dot"></span>
@@ -104,14 +104,15 @@
                   />
                   <label for="priorityAll">Tout</label>
                 </div>
+
                 <div class="radio-group">
                   <input
                     type="radio"
                     name="priority"
-                    id="priorityIsLow"
-                    value="faible"
+                    id="priorityIsHigh"
+                    value="haute"
                   />
-                  <label for="priorityIsLow">Faible</label>
+                  <label for="priorityIsHigh">Haute</label>
                 </div>
                 <div class="radio-group">
                   <input
@@ -126,10 +127,10 @@
                   <input
                     type="radio"
                     name="priority"
-                    id="priorityIsHigh"
-                    value="haute"
+                    id="priorityIsLow"
+                    value="faible"
                   />
-                  <label for="priorityIsHigh">Haute</label>
+                  <label for="priorityIsLow">Faible</label>
                 </div>
               </fieldset>
             </div>
@@ -243,6 +244,8 @@
               type="text"
               name="task"
               id="inputTask"
+              maxlength="150"
+              minlength="1"
               placeholder="Nommez votre tâche"
             />
 
@@ -283,6 +286,27 @@
             <div class="btnAddNewTask">
               <button id="btnAddTask">Enregistrer la tâche</button>
               <button id="btnBack">Annuler</button>
+            </div>
+
+            <div class="validateAddTask">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-badge-check-icon lucide-badge-check"
+              >
+                <path
+                  d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+                />
+                <path d="m9 12 2 2 4-4" />
+                <h4>Enregistrement reussie</h4>
+              </svg>
             </div>
           </div>
         </div>

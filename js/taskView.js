@@ -15,8 +15,7 @@ const listUl = document.querySelector(".listTask");
 export function displayTask(data) {
   listUl.innerHTML = "";
   data.tasks = readLocalStorage();
-  if (data.tasks === undefined) {
-    console.log("la valeur ajouté :", data.tasks);
+  if (data.tasks === undefined || data.tasks.length < 1) {
     displayInitTask();
   } else {
     for (let i = 0; i < data.tasks.length; i++) {
