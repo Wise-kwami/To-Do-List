@@ -8,38 +8,21 @@ const storageKey = "Tasks";
 
 export function saveLocalStorage(task) {
   console.log(state.tasks);
-  if (state.tasks) {
-    state.tasks.push(task);
-    const resultJSON = JSON.stringify(state.tasks);
-    localStorage.setItem(storageKey, resultJSON);
-    console.log("Ok le local storage existe, un ajout est effecué");
-  } else {
-    state.tasks.push(task);
-    const resultJSON = JSON.stringify(state.tasks);
-    localStorage.setItem(storageKey, resultJSON);
-    console.log("Pas de local storge, on en crée une ");
-  }
-}
-
-export function saveTask(task) {
   state.tasks.push(task);
   const resultJSON = JSON.stringify(state.tasks);
   localStorage.setItem(storageKey, resultJSON);
+  console.log("Ok le local storage, un ajout est effecué");
 }
 
 export function readLocalStorage() {
-  const data = JSON.parse(localStorage.getItem(storageKey)) || [];
-  return data;
+  try {
+    const dataJSON = JSON.parse(localStorage.getItem(storageKey)) || [];
+    return dataJSON;
+  } catch (error) {
+    console.log("Message d'erreur :", error.message);
+    return [];
+  }
 }
-// export loadTaskStorage ()
-// {
-//   try {
-//     const data= JSON.parse(localStorage.getItem(storageKey,))
-
-//   } catch (error) {
-//     console.log("Le message d'erreur :", error.message)
-//   }
-// }
 
 export function saveUpdateTask(task) {
   localStorage.setItem(storageKey, JSON.stringify(task));

@@ -42,6 +42,7 @@ export function createTask(data) {
       dots[0].classList.add("active-dot");
       iconeValidateAddTask.classList.remove("activeIcone");
     }, 3000);
+    state.task = newTask;
   } else {
     return;
   }
@@ -72,14 +73,20 @@ export function deleteTask(id, data) {
 }
 
 export function filterTaskByPriority(priority, data) {
-  const filteredData = data.tasks.filter((task) => task.priority === priority);
+  const filteredData = {
+    tasks: [],
+  };
+  filteredData.tasks = data.tasks.filter((task) => task.priority === priority);
   console.log("Tâches filtrées : ", filteredData);
-  state.tasks = filteredData;
+  return filteredData;
 }
 export function filterTaskByStatus(status, data) {
-  const filteredData = data.tasks.filter((task) => task.isFinished === status);
+  const filteredData = {
+    tasks: [],
+  };
+  filteredData.tasks = data.tasks.filter((task) => task.isFinished === status);
   console.log("Tâches filtrées : ", filteredData);
-  state.tasks = filteredData;
+  return filteredData;
 }
 
 export function classPriority(priority) {

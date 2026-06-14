@@ -1,8 +1,8 @@
 //Fichier JS maitre d'orchestre qui gere les fcihier js : store, taskModel et taskView
 //importation des modules
 
-import { readLocalStorage, state } from "/js/store.js";
-import { displayInitTask, displayTask } from "/js/taskView.js";
+import { readLocalStorage, state } from "./store.js";
+import { displayInitTask, displayTask } from "./taskView.js";
 import {
   createTask,
   filterTaskByPriority,
@@ -33,12 +33,10 @@ btnStatus.forEach((btn) => {
         displayTask(state);
         break;
       case "en-cours":
-        filterTaskByStatus(false, state);
-        displayTask(state);
+        displayTask(filterTaskByStatus(false, state));
         break;
       case "terminée":
-        filterTaskByStatus(true, state);
-        displayTask(state);
+        displayTask(filterTaskByStatus(true, state));
         break;
     }
   });
@@ -53,8 +51,7 @@ btnPriorities.forEach((btnPriority) => {
       console.log("le tout2 est :", state.tasks);
       displayTask(state);
     } else {
-      filterTaskByPriority(valuePriority, state);
-      displayTask(state);
+      displayTask(filterTaskByPriority(valuePriority, state));
     }
   });
 });
@@ -72,6 +69,10 @@ listUL.addEventListener("click", (event) => {
   }
   if (event.target.classList.contains("delete")) {
     console.log("un bouton delete");
+    console.log("l'id est :", event.target.id);
+  }
+  if (event.target.closest(".btn-delete")) {
+    console.log("delete appuyé :", event.target);
     console.log("l'id est :", event.target.id);
     deleteTask(event.target.id, state);
     displayTask(state);

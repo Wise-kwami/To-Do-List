@@ -24,7 +24,7 @@ export function displayTask(data) {
       li.innerHTML = `
      
                 <div class="task-main">
-                <input type="checkbox" ${classCheckBox(data.tasks[i].isFinished)}  id="${data.tasks[i].id}"/>
+                <input ${classCheckBox(data.tasks[i].isFinished)}  id="${data.tasks[i].id}"/>
                 
 
                   <label for="${data.tasks[i].id}" class="task-text"
@@ -33,18 +33,18 @@ export function displayTask(data) {
                   >
                 </div>
                 <div class="task-badges">
-                <span class=" ${classStatus(data.tasks[i].isFinished)}">${classStatusText(data.tasks[i].isFinished)}</span>
+                <span class="${classStatus(data.tasks[i].isFinished)}">${classStatusText(data.tasks[i].isFinished)}</span>
                 <span class= "${classPriority(data.tasks[i].priority)}">${data.tasks[i].priority}</span>
                 </div>
 
 
-                <div class="task-actions">
+                <div class="task-actions" id="${data.tasks[i].id}">
                
                   <!-- Bouton Supprimer -->
-                  <button class="btn-action btn-delete" title="Supprimer">
+                  <button class="btn-action btn-delete" title="Supprimer" id="${data.tasks[i].id}">
                     <svg
                     class= "delete"
-                    id= ${data.tasks[i].id}
+                    id="${data.tasks[i].id}"
                       xmlns="http://www.w3.org/2000/svg"
                       width="18"
                       height="18"
