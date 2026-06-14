@@ -24,21 +24,21 @@ const btnPriorities = document.querySelectorAll(
 const btnStatus = document.querySelectorAll(".radio-group input[name=state]");
 const listUL = document.querySelector(".listTask");
 
-btnStatus.forEach((btnStatus) => {
-  btnStatus.addEventListener("change", () => {
-    console.log(btnStatus.value);
-    switch (btnStatus.value) {
+btnStatus.forEach((btn) => {
+  btn.addEventListener("change", () => {
+    console.log("valeur de btnStatus :", btn.value);
+    switch (btn.value) {
       case "tout":
-        console.log("la radio est tout");
+        state.tasks = readLocalStorage();
         displayTask(state);
         break;
-      case "termine":
-        console.log("la radio est terminée");
-        displayTask(filterTaskByStatus(true));
-        break;
       case "en-cours":
-        console.log("la radio est en cours");
-        displayTask(filterTaskByStatus(false));
+        filterTaskByStatus(false, state);
+        displayTask(state);
+        break;
+      case "terminée":
+        filterTaskByStatus(true, state);
+        displayTask(state);
         break;
     }
   });
@@ -47,35 +47,14 @@ btnPriorities.forEach((btnPriority) => {
   btnPriority.addEventListener("change", () => {
     const valuePriority = btnPriority.value;
     console.log(valuePriority);
-
-    switch (valuePriority) {
-      case "tout":
-        console.log("la radio est tout");
-        console.log("Mes données en avant : ", readLocalStorage());
-        displayTask(state);
-        break;
-      case "haute":
-        console.log("la radio est haute");
-        console.log("Mes données en avant : ", readLocalStorage());
-
-        const taskDisplayFilteredByPriority =
-          filterTaskByPriority(valuePriority);
-        displayTask(taskDisplayFilteredByPriority);
-        break;
-      case "moyenne":
-        console.log("la radio est moyenne");
-        console.log("Mes données en avant : ", readLocalStorage());
-        const taskDisplayFilteredByPriority2 =
-          filterTaskByPriority(valuePriority);
-        displayTask(taskDisplayFilteredByPriority2);
-        break;
-      case "faible":
-        console.log("la radio est faible");
-        console.log("Mes données en avant : ", readLocalStorage());
-        const taskDisplayFilteredByPriority3 =
-          filterTaskByPriority(valuePriority);
-        displayTask(taskDisplayFilteredByPriority3);
-        break;
+    if (valuePriority === "tout") {
+      state.tasks = readLocalStorage();
+      console.log("le tout est :", valuePriority);
+      console.log("le tout2 est :", state.tasks);
+      displayTask(state);
+    } else {
+      filterTaskByPriority(valuePriority, state);
+      displayTask(state);
     }
   });
 });

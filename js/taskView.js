@@ -2,20 +2,20 @@
 // , c'est à dire l'ajout, la suppression et la modification des tâches,
 // ainsi que la validation de l'input de l'utilisateur
 
-import { readLocalStorage } from "/js/store.js";
+import { readLocalStorage } from "./store.js";
 import {
   classPriority,
   classStatus,
   classStatusText,
   classCheckBox,
-} from "/js/taskLogic.js";
+} from "./taskLogic.js";
 
 const listUl = document.querySelector(".listTask");
 
 export function displayTask(data) {
   listUl.innerHTML = "";
-  data.tasks = readLocalStorage();
-  if (data.tasks === undefined || data.tasks.length < 1) {
+  // data.tasks = readLocalStorage();
+  if (data.tasks === undefined || data.tasks.length === 0) {
     displayInitTask();
   } else {
     for (let i = 0; i < data.tasks.length; i++) {
@@ -27,7 +27,7 @@ export function displayTask(data) {
                 <input type="checkbox" ${classCheckBox(data.tasks[i].isFinished)}  id="${data.tasks[i].id}"/>
                 
 
-                  <label for="check-1" class="task-text"
+                  <label for="${data.tasks[i].id}" class="task-text"
                     >${data.tasks[i].nameTask} 
                     </label
                   >
@@ -77,7 +77,7 @@ viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
  <circle cx="12" cy="12" r="10"/><path d="M4.929 4.929 19.07 19.071"/>
  </svg>
 
-  <h3>Aucune tache</h3>
+  <h3>Aucune tâche</h3>
 
   </div>
 

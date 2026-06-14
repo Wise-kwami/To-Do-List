@@ -2,14 +2,14 @@
 // ainsi que la validation de l'input de l'utilisateur
 // Fonction pour tester le resulat
 
-import { displayTask, displayInitTask } from "/js/taskView.js";
+import { displayTask, displayInitTask } from "./taskView.js";
 import {
   saveUpdateTask,
   saveLocalStorage,
   readLocalStorage,
   addTask,
   state,
-} from "/js/store.js";
+} from "./store.js";
 // function result(res) {
 //   return console.log(res);
 // }
@@ -20,7 +20,7 @@ const radioPriority = document.querySelectorAll(
 );
 const iconeValidateAddTask = document.querySelector(".validateAddTask");
 export function createTask(data) {
-  let inputPriority;
+  let inputPriority = "faible";
 
   for (let i = 0; i < radioPriority.length; i++) {
     if (radioPriority[i].checked) {
@@ -41,7 +41,7 @@ export function createTask(data) {
       dots[1].classList.remove("active-dot");
       dots[0].classList.add("active-dot");
       iconeValidateAddTask.classList.remove("activeIcone");
-    }, 2000);
+    }, 3000);
   } else {
     return;
   }
@@ -61,7 +61,6 @@ export function checkTask(i, btnChecked, data) {
     task.isFinished = false;
     console.log("la tache vaut :", task);
     saveUpdateTask(data.tasks);
-    //return data;
   }
 }
 export function deleteTask(id, data) {
@@ -69,19 +68,18 @@ export function deleteTask(id, data) {
   console.log("les données avant le filtre pour supprimer: ", data.tasks);
   console.log("les données apres le filtre pour supprimer: ", newData);
   saveUpdateTask(newData);
+  state.tasks = newData;
 }
 
-export function filterTaskByPriority(priority) {
-  const data = readLocalStorage();
-  const filteredData = data.filter((task) => task.priority === priority);
+export function filterTaskByPriority(priority, data) {
+  const filteredData = data.tasks.filter((task) => task.priority === priority);
   console.log("Tâches filtrées : ", filteredData);
-  return filteredData;
+  state.tasks = filteredData;
 }
-export function filterTaskByStatus(status) {
-  const data = readLocalStorage();
-  const filteredData = data.filter((task) => task.isFinished === status);
+export function filterTaskByStatus(status, data) {
+  const filteredData = data.tasks.filter((task) => task.isFinished === status);
   console.log("Tâches filtrées : ", filteredData);
-  return filteredData;
+  state.tasks = filteredData;
 }
 
 export function classPriority(priority) {
